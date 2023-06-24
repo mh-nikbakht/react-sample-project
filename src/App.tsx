@@ -1,25 +1,19 @@
-import { Route, Routes, Link } from "react-router-dom";
-import {
-	AboutUs,
-	ContactMe,
-	ContactUs,
-	WelcomePage,
-} from "./components/AboutUs";
-import { Home } from "./components/home";
+import { Route, Routes, Link, NavLink } from "react-router-dom";
+import { AboutUs, ContactMe, ContactUs } from "./components/AboutUs";
+import { Home } from "./components/Home";
+import { NotFound } from "./components/NotFound";
+import { WelcomePageRoutes } from "./WelcomePageRoutes";
+
 function App() {
 	return (
 		<>
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/about" element={<AboutUs />} />
-				<Route path="/contactUs" element={<ContactUs />} />
-				<Route path="/wpage" element={<WelcomePage />} />
-				<Route path="/contactMe" element={<ContactMe />} />
+				<Route path="/welcomes" element={<h1> Extra Content </h1>} />
 			</Routes>
 			<nav>
-				<ul>
+				<ol>
 					<li>
-						<Link to="/">Home Page</Link>
+						<NavLink to="/">Home Page</NavLink>
 					</li>
 					<li>
 						<Link to="/about">about us</Link>
@@ -28,13 +22,25 @@ function App() {
 						<Link to="/contactUs">contact us</Link>
 					</li>
 					<li>
-						<Link to="/wpage">wpage</Link>
-					</li>
-					<li>
 						<Link to="/contactMe">contactMe</Link>
 					</li>
-				</ul>
+					<li>
+						<NavLink to="/welcomes">Welcome Pages</NavLink>
+					</li>
+				</ol>
 			</nav>
+			<Routes>
+				<Route path="/contactMe" element={<ContactMe />} />
+				<Route path="/about/:id?" element={<AboutUs />} />
+				<Route path="/contactUs" element={<ContactUs />} />
+
+				{/* <Route path="/welcomes" element={<WelcomeList />} />
+				<Route path="/welcomes/:id" element={<Welcome />} />
+				<Route path="/welcomes/new" element={<NewWelcome />} /> */}
+				<Route path="/" element={<Home />} />
+				<Route path="/welcomes/*" element={<WelcomePageRoutes />} />
+				<Route path="*" element={<NotFound />} />
+			</Routes>
 		</>
 	);
 }

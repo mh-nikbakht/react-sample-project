@@ -1,8 +1,7 @@
+import { useParams } from "react-router-dom";
 export function AboutUs() {
-	return <>AboutUs Page</>;
-}
-export function WelcomePage() {
-	return <>WelcomePage Page</>;
+	const { id } = useParams();
+	return <>AboutUs Page {id}</>;
 }
 export function ContactUs() {
 	return <>ContactUs Page</>;

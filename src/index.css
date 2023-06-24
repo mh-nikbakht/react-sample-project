@@ -1,3 +1,19 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+body {
+	background-color: darkslateblue;
+	color: aliceblue;
+}
+li {
+	color: red;
+}
+ol {
+	background-color: rgb(57, 132, 132) !important;
+}
+h1 {
+	color: navajowhite;
+}
+.active {
+	color: greenyellow !important;
+}

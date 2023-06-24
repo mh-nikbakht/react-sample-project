@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import Alert from "./Alert";
 import Button from "./Button";
 import ListGroup from "./ListGroup";
+import { useLocation } from "react-router-dom";
 
 export function Home() {
 	//let items = ["london", "san francisco", "tehran", "tokyo"];
 	const [countries, setCountries] = useState([]);
 	const [province, setProvince] = useState([]);
-
+	const location = useLocation();
 	useEffect(() => {
 		axios
 			.get("http://isdynamicdev.com/basicinfo/country/getAll", {
@@ -35,6 +36,7 @@ export function Home() {
 	const [alertVisible, setAlertVisibility] = useState(false);
 	return (
 		<>
+			<p>{location.state}</p>
 			<Button color="danger" onClick={() => setAlertVisibility(true)}>
 				My Button
 			</Button>
